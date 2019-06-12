@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/grey_medium"
+    tools:ignore="ContentDescription, Autofill, TextFields, UseCompoundDrawables"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/user_profile"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:background="@color/white"
+                    android:baselineAligned="false">
+
+                    <RelativeLayout
+                        android:layout_width="136dp"
+                        android:layout_height="125dp">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_margin="5dp"
+                            app:cardCornerRadius="50dp"
+                            android:innerRadius="0dp"
+                            android:shape="ring"
+                            android:layout_centerHorizontal="true"
+                            android:thicknessRatio="1.9">
+
+                            <ImageView
+                                android:id="@+id/user_img"
+                                android:layout_height="match_parent"
+                                android:layout_width="match_parent"
+                                android:layout_alignParentTop="true"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_user"/>
+                        </android.support.v7.widget.CardView>
+
+                        <ImageButton
+                            android:id="@+id/camera"
+                            android:layout_width="42dp"
+                            android:layout_height="36dp"
+                            android:layout_alignParentBottom="true"
+                            android:layout_alignParentEnd="true"
+                            android:background="@color/transparent"
+                            android:src="@drawable/ic_camera"/>
+
+                    </RelativeLayout>
+
+
+                    <Button
+                        android:id="@+id/admin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:background="@color/transparent"
+                        android:textColor="@color/colorAccent"
+                        android:drawablePadding="8dp"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        android:text="@string/title_administrator"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="5dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|start">
+
+                        <ImageView
+                            android:id="@+id/gender_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_man"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="8pt"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginStart="15dp"
+                            android:text="@string/title_profile"/>
+
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey_medium" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_name"/>
+
+                    <EditText
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/hint_name_and_title"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="8pt"
+                        android:maxLength="50"
+                        android:layout_marginTop="5dp"
+                        android:inputType="textCapWords"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_occupation"/>
+
+                    <EditText
+                        android:id="@+id/user_occupation"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/hint_your_occupation"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="8pt"
+                        android:maxLength="100"
+                        android:layout_marginTop="5dp"
+                        android:inputType="textCapWords"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_last_education"/>
+
+                    <EditText
+                        android:id="@+id/user_education"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/hint_your_education"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="8pt"
+                        android:lines="1"
+                        android:maxLength="100"
+                        android:layout_marginTop="5dp"
+                        android:inputType="textCapWords"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_gender"/>
+
+                    <RadioGroup
+                        android:orientation="horizontal"
+                        android:id="@+id/gender_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/user_man"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="7.5pt"
+                            android:text="@string/title_man"/>
+
+                        <RadioButton
+                            android:id="@+id/user_woman"
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginStart="12dp"
+                            android:textSize="7.5pt"
+                            android:text="@string/title_woman"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                android:layout_margin="5dp">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:background="@color/white">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center|start">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_phone_book"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="8pt"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:layout_marginStart="15dp"
+                            android:text="@string/title_contact"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/grey_medium" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_email"/>
+
+                    <TextView
+                        android:id="@+id/user_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textSize="8pt"
+                        android:layout_marginTop="5dp"/>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_phone_number"/>
+
+                    <EditText
+                        android:id="@+id/user_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/hint_phone_number"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:maxLength="13"
+                        android:textSize="8pt"
+                        android:layout_marginTop="5dp"
+                        android:inputType="number" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="6.5pt"
+                        android:textStyle="bold"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/title_address"/>
+
+                    <EditText
+                        android:id="@+id/user_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/info_your_address"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:maxLength="25"
+                        android:textSize="8pt"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:inputType="textCapWords" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:gravity="center">
+
+                <com.google.android.gms.common.SignInButton
+                    android:id="@+id/sign_out_button"
+                    android:layout_width="200dp"
+                    android:layout_height="46dp" />
+
+                <Button
+                    android:id="@+id/user_update"
+                    android:visibility="gone"
+                    android:layout_marginStart="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:background="@color/colorPrimary"
+                    android:textColor="@color/white"
+                    android:textSize="8pt"
+                    android:text="@string/title_save" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>

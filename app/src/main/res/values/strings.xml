@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">GoTeacher</string>
+    <string name="title_sign_in">Masuk</string>
+    <string name="title_sign_out">Keluar</string>
+    <string name="title_search">Mau kursus apa ?</string>
+    <string name="title_sort">Sortir</string>
+    <string name="title_category">Kategori</string>
+    <string name="title_administrator">ADMINISTRATOR</string>
+    <string name="title_save">Simpan</string>
+    <string name="title_phone_number">Nomor HP</string>
+    <string name="title_location">Lokasi</string>
+    <string name="title_email">Email</string>
+    <string name="title_contact">Kontak</string>
+    <string name="title_name">Nama</string>
+    <string name="title_occupation">Pekerjaan</string>
+    <string name="title_last_education">Pendidikan Terakhir</string>
+    <string name="title_gender">Jenis Kelamin</string>
+    <string name="title_man">Pria</string>
+    <string name="title_woman">Wanita</string>
+    <string name="title_profile">Biodata</string>
+    <string name="title_ok">OK</string>
+    <string name="title_cancel">Batal</string>
+    <string name="title_empty">Kosong</string>
+    <string name="title_wrong_format">Format salah</string>
+    <string name="title_address">Alamat</string>
+    <string name="title_class_location">Lokasi Kelas</string>
+    <string name="title_city">Kota</string>
+    <string name="title_your_city">Kota mu sekarang</string>
+    <string name="title_map_location">Peta Lokasi</string>
+    <string name="client_id_oauth">
+1054156203382-umhloiunc9joku98521ir5pdobr68er6.apps.googleusercontent.com</string>
+
+    <string name="info_still_loading">Harap Menunggu . . .</string>
+
+
+    <string name="hint_phone_number">081777888999</string>
+    <string name="hint_name_and_title">Nama dan gelar mu</string>
+    <string name="hint_your_phone_number">"Nomor HP Mu!"</string>
+    <string name="hint_your_occupation">Pekerjaan mu</string>
+    <string name="hint_your_education">Pendidikan terakhir /saat ini</string>
+    <string name="hint_your_location">Lokasi mengajar</string>
+
+
+    <string name="info_search_not_found">Pencarian tidak ditemukan</string>
+    <string name="info_press_to_exit">Tekan Lagi Untuk Keluar</string>
+    <string name="info_something_wrong">Ops, terjadi kesalahan teknis</string>
+    <string name="info_connection_failure">Gagal, cek koneksi internet anda</string>
+    <string name="info_fill_correctly">Harap diisi dengan benar</string>
+    <string name="info_need_to_set_category">Belum memilih kategory siswa</string>
+    <string name="info_need_login_to_add">Anda perlu login.</string>
+    <string name="info_need_complete_bio">Harap mengisi data diri anda.</string>
+    <string name="info_min_4_letters">Min. 4 huruf</string>
+    <string name="info_min_3_letters">Min. 3 huruf</string>
+    <string name="info_need_photo">Anda belum memiliki foto profil</string>
+    <string name="info_banned">Akun anda dinonaktifkan admin</string>
+    <string name="info_choose_map_location_correctly">Pastikan lokasi anda di peta, sesuai dengan data alamat</string>
+    <string name="info_choose_map_location">Pilih peta lokasi</string>
+
+
+    <string name="title_per_hour">"/Jam"</string>
+    <string name="title_courses_material">Materi Kursus</string>
+    <string name="title_univ">Univ.</string>
+    <string name="title_junior">SMP</string>
+    <string name="title_elementary">SD</string>
+    <string name="title_senior">SMA</string>
+    <string name="title_student_category">Kategori Siswa</string>
+    <string name="title_rates_per_hour">Tarif / Jam</string>
+    <string name="title_rupiah">Rp</string>
+    <string name="title_register">Tambah Kelas</string>
+    <string name="title_save_class">Simpan Perubahan</string>
+    <string name="title_my_class">Kelas Ku</string>
+    <string name="title_choose_photo">Pilih Foto</string>
+    <string name="title_choose_image">Pilih Gambar</string>
+    <string name="title_banner">Banner Kelas</string>
+    <string name="title">Judul</string>
+    <string name="title_courses_summary">Ringkasan mata pelajaran anda</string>
+    <string name="title_desc">Deskripsi</string>
+    <string name="title_courses_desc">Dekripsi dari mata pelajaran anda</string>
+    <string name="title_all">Semua</string>
+    <string name="title_cheapest">Termurah</string>
+    <string name="title_most_expensive">Termahal</string>
+    <string name="title_oldest">Terlama</string>
+    <string name="title_newest">Terbaru</string>
+    <string name="title_name_az">Nama (A~Z)</string>
+    <string name="title_name_za">Nama (Z~A)</string>
+    <string name="info_ads_banner_empty">Banner kelas masih kosong!</string>
+    <string name="title_delete">Hapus</string>
+    <string name="title_edit">Ubah</string>
+    <string name="title_teacher_profile">Profil Pengajar</string>
+    <string name="info_your_address">Alamat rumah mu</string>
+
+    <string name="google_maps_key">AIzaSyA97nJnO7wnsy6yO3I9_70jUnT29j7JcmE</string>
+
+</resources>

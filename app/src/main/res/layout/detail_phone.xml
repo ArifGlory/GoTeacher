@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="HardcodedText, ButtonStyle"
+    android:id="@+id/phone_layout"
+    android:gravity="bottom"
+    android:visibility="visible"
+    android:background="@color/dark_transparent">
+
+    <LinearLayout
+        android:id="@+id/phone_blank_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:paddingBottom="18dp"
+            android:textSize="7pt"
+            android:textColor="@color/grey"
+            android:text="Hubungi Pengajar"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+
+            <Button
+                android:id="@+id/phone_call"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@color/transparent"
+                android:drawableTop="@drawable/ic_telephone"
+                android:drawablePadding="5dp"
+                android:textSize="7pt"
+                android:textColor="@color/black"
+                android:text="Telepon" />
+
+
+            <Button
+                android:id="@+id/whatsapp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:background="@color/transparent"
+                android:drawableTop="@drawable/ic_whatsapp"
+                android:drawablePadding="5dp"
+                android:textSize="7pt"
+                android:textColor="@color/black"
+                android:text="WhatsApp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
