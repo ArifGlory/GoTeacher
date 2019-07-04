@@ -374,4 +374,20 @@
         android:visibility="gone"
         android:layout_centerInParent="true"/>
 
+    <Button
+        android:id="@+id/btnAdminLogin"
+        android:layout_below="@+id/sign_in_button"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorAccent"
+        android:text=" Admin Login "
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"/>
+
 </RelativeLayout>

@@ -13,6 +13,12 @@
         android:title="Daftar" />
 
     <item
+        android:id="@+id/navigation_pesanan"
+        android:icon="@drawable/ic_library_books_black_24dp"
+        android:title="Pesanan" />
+
+
+    <item
         android:id="@+id/navigation_profil"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Profil" />

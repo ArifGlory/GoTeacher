@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -38,7 +39,9 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.goteacher.R;
+import com.goteacher.main.LoginAdminActivity;
 import com.goteacher.utils.PermissionHelper;
+import com.goteacher.utils.SharedVariable;
 import com.goteacher.utils.Utils;
 
 import java.io.File;
@@ -63,6 +66,7 @@ public class UserProfile extends Fragment implements View.OnClickListener, Permi
     private LinearLayout profile;
     private ImageView img, genderIcon;
     private SignInButton login;
+    private Button btnAdminLogin;
 
     private GoogleSignInClient client;
     private EditText phoneNumber, username, eEducation, eOccupation, eAddress;
@@ -113,6 +117,7 @@ public class UserProfile extends Fragment implements View.OnClickListener, Permi
         pDialog.setMessage(getActivity().getResources().getString(R.string.info_still_loading));
 
         login = view.findViewById(R.id.sign_in_button);
+        btnAdminLogin = view.findViewById(R.id.btnAdminLogin);
         SignInButton logout = view.findViewById(R.id.sign_out_button);
         setSignInButton(login, true);
         setSignInButton(logout, false);
@@ -130,6 +135,14 @@ public class UserProfile extends Fragment implements View.OnClickListener, Permi
         app().permission.setPermissionListener(this);
 
         updateUI();
+        btnAdminLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Log.d("tesklik","tess");
+               Intent intent = new Intent(getActivity(), LoginAdminActivity.class);
+               startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -177,6 +190,7 @@ public class UserProfile extends Fragment implements View.OnClickListener, Permi
     public void updateUI() {
         profile.setVisibility(app().account != null ? View.VISIBLE : View.GONE);
         login.setVisibility(app().account != null ? View.GONE : View.VISIBLE);
+        btnAdminLogin.setVisibility(app().account != null ? View.GONE : View.VISIBLE);
 
         if (app().account != null) {
             name = app().prefs.getUsername();
@@ -384,6 +398,7 @@ public class UserProfile extends Fragment implements View.OnClickListener, Permi
             }
             Log.d("akun :",""+task.getResult().getDisplayName());
             app().main.updateMyProfile();
+            SharedVariable.nama = app().account.getDisplayName();
 
             /*if (resultCode == Activity.RESULT_OK) {
                 try {

@@ -10,13 +10,27 @@ public class Pesanan implements Serializable {
     public String titleCourse;
     public String hargaCourse;
     public String imgBuktiBayar;
+    public String status;
 
-    public Pesanan(String idCourse, String idUser, String titleCourse, String hargaCourse, String imgBuktiBayar) {
+    public Pesanan(){
+
+    }
+
+    public Pesanan(String idCourse, String idUser, String titleCourse, String hargaCourse, String imgBuktiBayar,String status) {
         this.idCourse = idCourse;
         this.idUser = idUser;
         this.titleCourse = titleCourse;
         this.hargaCourse = hargaCourse;
         this.imgBuktiBayar = imgBuktiBayar;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getIdPesanan() {

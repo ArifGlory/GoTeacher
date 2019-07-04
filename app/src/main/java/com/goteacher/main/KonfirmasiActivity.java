@@ -40,6 +40,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
     FirebaseFirestore firestore;
     CollectionReference ref;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +70,8 @@ public class KonfirmasiActivity extends AppCompatActivity {
                 email,
                 model.getTitle(),
                 String.valueOf(model.getRates()),
-                "no"
+                "no",
+                "menunggu konfirmasi"
         );
         pesanan.setIdPesanan(time);
 

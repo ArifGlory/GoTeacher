@@ -20,4 +20,5 @@
     <color name="dark_transparent">#95000000</color>
     <color name="grey_transparent">#20DDDDDD</color>
     <color name="colorBg">#f1f2f5</color>
+    <color name="red_400">#EF5350</color>
 </resources>

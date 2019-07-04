@@ -41,6 +41,8 @@ import com.goteacher.detail.DetailActivity;
 import com.goteacher.R;
 import com.goteacher.main.adapter.Adapter;
 import com.goteacher.main.adapter.SearchAdapter;
+import com.goteacher.main.fragment.FragmentChoosePesanan;
+import com.goteacher.main.fragment.FragmentMyPesanan;
 import com.goteacher.main.fragment.MyAds;
 import com.goteacher.main.fragment.UserProfile;
 import com.goteacher.utils.GridDecoration;
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //flag untuk perpindahan fragment atau view
     public enum Tag {
-        HOME, USER, ADS
+        HOME, USER, ADS , PESANAN , CHOOSEPESANAN
     }
 
     private Handler mHandler = new Handler();
@@ -79,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private UserProfile myProfile;
     private MyAds myAds;
+    private FragmentMyPesanan myPesanan;
+    private FragmentChoosePesanan choosePesanan;
 
     private FirebaseFirestore firestore;
     private RecyclerView mainList, searchList;
@@ -141,6 +145,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     return true;
                 case R.id.navigation_profil:
                     loadFragment(Tag.USER);
+                    return true;
+
+                case R.id.navigation_pesanan:
+                    if (app().account != null)
+                    loadFragment(Tag.CHOOSEPESANAN);
+                    else {
+                        showInfo(getResources().getString(R.string.info_need_login_to_add));
+                    }
                     return true;
 
             }
@@ -363,6 +375,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTag = tag;
         myProfile = null;
         myAds = null;
+        myPesanan = null;
+        choosePesanan = null;
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -375,6 +389,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         case USER:
                             setButtonState(2);
                             fragment = myProfile = new UserProfile();
+                            break;
+                        case CHOOSEPESANAN:
+                            setButtonState(2);
+                            fragment = choosePesanan = new FragmentChoosePesanan();
                             break;
                         default:
                             setButtonState(1); // rubah juga warna tombol nya
