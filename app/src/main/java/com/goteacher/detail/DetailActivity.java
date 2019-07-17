@@ -37,6 +37,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.goteacher.R;
+import com.goteacher.admin.DetailPesananActivity;
 import com.goteacher.detail.fragment.AddressMap;
 import com.goteacher.detail.fragment.Phone;
 import com.goteacher.main.KonfirmasiActivity;
@@ -47,6 +48,8 @@ import com.goteacher.utils.model.UserModel;
 import java.util.Objects;
 
 import javax.annotation.Nullable;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 import static com.goteacher.Apps.app;
 import static com.goteacher.utils.Utils.getCurrency;
@@ -139,9 +142,20 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         btnHire.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent intent = new Intent(getApplicationContext(), KonfirmasiActivity.class);
-               intent.putExtra("model",model);
-               startActivity(intent);
+
+
+
+                if (app().account != null){
+                    Intent intent = new Intent(getApplicationContext(), KonfirmasiActivity.class);
+                    intent.putExtra("model",model);
+                    startActivity(intent);
+                }else {
+                    new SweetAlertDialog(DetailActivity.this,SweetAlertDialog.WARNING_TYPE)
+                            .setContentText("Anda Perlu login")
+                            .show();
+                }
+
+
             }
         });
     }

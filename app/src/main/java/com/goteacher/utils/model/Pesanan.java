@@ -7,6 +7,7 @@ public class Pesanan implements Serializable {
     public String idPesanan;
     public String idCourse;
     public String idUser;
+    public String idPemilikCourse;
     public String titleCourse;
     public String hargaCourse;
     public String imgBuktiBayar;
@@ -16,13 +17,23 @@ public class Pesanan implements Serializable {
 
     }
 
-    public Pesanan(String idCourse, String idUser, String titleCourse, String hargaCourse, String imgBuktiBayar,String status) {
+    public Pesanan(String idCourse, String idUser, String titleCourse, String hargaCourse, String imgBuktiBayar,String status,
+                   String idPemilikCourse) {
         this.idCourse = idCourse;
         this.idUser = idUser;
         this.titleCourse = titleCourse;
         this.hargaCourse = hargaCourse;
         this.imgBuktiBayar = imgBuktiBayar;
         this.status = status;
+        this.idPemilikCourse = idPemilikCourse;
+    }
+
+    public String getIdPemilikCourse() {
+        return idPemilikCourse;
+    }
+
+    public void setIdPemilikCourse(String idPemilikCourse) {
+        this.idPemilikCourse = idPemilikCourse;
     }
 
     public String getStatus() {

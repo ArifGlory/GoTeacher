@@ -71,7 +71,8 @@ public class KonfirmasiActivity extends AppCompatActivity {
                 model.getTitle(),
                 String.valueOf(model.getRates()),
                 "no",
-                "menunggu konfirmasi"
+                "menunggu konfirmasi",
+                model.getCreator()
         );
         pesanan.setIdPesanan(time);
 

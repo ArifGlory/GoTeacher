@@ -1,13 +1,20 @@
 package com.goteacher.main;
 
+import android.app.ActivityManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +22,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +38,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -37,6 +46,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.goteacher.admin.DetailPesananActivity;
 import com.goteacher.detail.DetailActivity;
 import com.goteacher.R;
 import com.goteacher.main.adapter.Adapter;
@@ -45,15 +55,18 @@ import com.goteacher.main.fragment.FragmentChoosePesanan;
 import com.goteacher.main.fragment.FragmentMyPesanan;
 import com.goteacher.main.fragment.MyAds;
 import com.goteacher.main.fragment.UserProfile;
+import com.goteacher.service.FirestoreNotificationService;
 import com.goteacher.utils.GridDecoration;
 import com.goteacher.utils.PreferencesHelper;
 import com.goteacher.utils.RecyclerViewListener;
 import com.goteacher.utils.Utils;
 import com.goteacher.utils.model.Model;
+import com.goteacher.utils.model.Pesanan;
 import com.goteacher.utils.model.UserModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -100,6 +113,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout sortingLayout, categoryLayout, searchLayout;
     private EditText search;
     private ImageButton clearSearch;
+    private String userID,isAdmin;
+    CollectionReference ref;
+    NotificationCompat.Builder notification;
+    public final int uniqueId = 654321;
+    Pesanan pesananMasuk;
 
 
     @Override
@@ -116,6 +134,77 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setView();
         getAllData();
         updateMyProfile();
+
+        notification = new NotificationCompat.Builder(this);
+        notification.setAutoCancel(false);
+        notification.setOngoing(true);
+        isAdmin = "false";
+
+        ref = firestore.collection("com.goteacher").document("Teacher").collection("User");
+
+        if (app().account != null){
+            userID = app().account.getEmail();
+        }else {
+            userID = "no";
+        }
+
+       // listenNotif();
+
+
+    }
+
+    private void setViewNotification(){
+        notification.setSmallIcon(R.drawable.ic_app);
+        notification.setTicker("Ada Pesanan untuk mengajar.");
+        notification.setWhen(System.currentTimeMillis());
+        notification.setContentTitle("Go Teacher");
+        notification.setContentText("Ada Pesanan mengajar baru ! ayo cek");
+        notification.setDefaults(Notification.DEFAULT_SOUND);
+
+
+        Intent intent = new Intent(getApplicationContext(), DetailPesananActivity.class);
+        intent.putExtra("pesanan",pesananMasuk);
+        intent.putExtra("isAdmin",isAdmin);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        notification.setContentIntent(pendingIntent);
+
+        // Build the nofification
+
+        NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+
+        nm.notify(uniqueId,notification.build());
+    }
+
+    private void listenNotif(){
+        ref.document(userID).collection("listPesanan").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w("FirestoreNotif", "listen:error", e);
+                    return;
+                }
+
+                for (DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()) {
+                    switch (dc.getType()) {
+                        case ADDED:
+                            Log.d("FirestoreNotif", "New Msg: " + dc.getDocument().toObject(Message.class));
+                            pesananMasuk = dc.getDocument().toObject(Pesanan.class);
+                            setViewNotification();
+                            break;
+                        case MODIFIED:
+                            Log.d("FirestoreNotif", "Modified Msg: " + dc.getDocument().toObject(Message.class));
+                            break;
+                        case REMOVED:
+                            Log.d("FirestoreNotif", "Removed Msg: " + dc.getDocument().toObject(Message.class));
+                            break;
+                    }
+                }
+            }
+        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -744,4 +833,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             showInfo(getString(R.string.info_press_to_exit));
         }
     }
+
+    public boolean isServiceRunning(Context c, Class<?> serviceClass)
+    {
+        ActivityManager activityManager = (ActivityManager)c.getSystemService(Context.ACTIVITY_SERVICE);
+
+
+        List<ActivityManager.RunningServiceInfo> services = activityManager.getRunningServices(Integer.MAX_VALUE);
+
+
+
+        for(ActivityManager.RunningServiceInfo runningServiceInfo : services)
+        {
+            if(runningServiceInfo.service.getClassName().equals(serviceClass.getName()))
+            {
+                return true;
+            }
+        }
+
+        return false;
+
+
+    }
+
 }
